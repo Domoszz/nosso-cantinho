@@ -1,29 +1,364 @@
 <!doctype html>
-<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <title>Nosso Cantinho 💜</title>
+
 <style>
-body{margin:0;background:linear-gradient(135deg,#fff7fc,#f3edff);font-family:Arial,sans-serif;color:#3b3040}.app{max-width:650px;margin:auto;padding:25px 16px 50px}.hero{text-align:center}.hero b{font-size:42px}.hero h1{margin:5px 0}.muted{color:#8d8191}.card{background:#fff;border:1px solid #eee1ee;border-radius:22px;padding:20px;margin:14px 0;box-shadow:0 8px 25px #5b35600d}h2{font-size:18px}.points{display:flex;justify-content:space-between;background:linear-gradient(135deg,#f5eaff,#fff0f7)}.points strong{font-size:28px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}button{border:1px solid #eaddeb;background:#fff;border-radius:15px;padding:13px;cursor:pointer;color:#3b3040;font-size:14px}button.sel{background:#f3e6fa;border-color:#ad8bc9}textarea{width:100%;min-height:95px;box-sizing:border-box;border:1px solid #eaddeb;border-radius:15px;padding:12px;font:inherit;resize:vertical}.primary{width:100%;margin-top:12px;border:0;background:linear-gradient(135deg,#9a79d4,#df88b5);color:white;font-weight:bold;padding:15px}.reward{display:flex;align-items:center;gap:12px;padding:13px 0;border-bottom:1px solid #eee}.reward:last-child{border:0}.reward .icon{font-size:27px}.reward .info{flex:1}.locked{opacity:.4}.claim{padding:8px 11px}.toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);background:#3b3040;color:#fff;padding:12px 16px;border-radius:14px;display:none}@media(max-width:480px){.grid{grid-template-columns:1fr}}
-</style></head>
-<body><div class="app">
-<div class="hero"><b>💜</b><h1>Nosso Cantinho</h1><p class="muted">Um lugarzinho só nosso. Pra contar como tá o dia, pedir carinho e juntar umas estrelinhas.</p></div>
-<div class="card points"><div><small>Suas estrelinhas</small><br><strong id="pts">0 ✨</strong></div><div style="text-align:right"><small>Check-ins</small><br><strong id="cks">0</strong></div></div>
-<div class="card"><h2>💭 Como você tá hoje?</h2><div class="grid" id="moods">
-<button>🥰 Feliz</button><button>😌 Bem</button><button>😐 Meio meh</button><button>🥺 Meio tristinha</button><button>😤 Estressada</button><button>🥱 Cansada</button><button>🫂 Precisando de carinho</button><button>💜 Com saudade</button></div></div>
-<div class="card"><h2>🫂 O que você gostaria agora?</h2><div class="grid" id="needs">
-<button>🫂 Abraço</button><button>💋 Beijinhos</button><button>🎮 Jogar juntos</button><button>🎬 Assistir algo</button><button>💬 Conversar</button><button>😂 Dar risada</button><button>❤️ Ficar juntinha</button><button>🍫 Um chocolatinho</button></div></div>
-<div class="card"><h2>💌 Quer me contar alguma coisa?</h2><textarea id="msg" placeholder="Pode falar qualquer coisa..."></textarea></div>
-<div class="card"><h2>🌙 Uma coisinha boa de hoje</h2><textarea id="good" placeholder="Mesmo que seja pequenininha."></textarea><button class="primary" onclick="checkin()">Guardar meu check-in 💜</button></div>
-<div class="card"><h2>🎁 Mimos</h2><div id="rewards"></div></div>
-<p class="muted" style="text-align:center;font-size:13px">Feito com carinho. 💜</p></div><div class="toast" id="toast"></div>
+body{
+  margin:0;
+  background:linear-gradient(135deg,#fff7fc,#f3edff);
+  font-family:Arial,sans-serif;
+  color:#3b3040
+}
+
+.app{
+  max-width:650px;
+  margin:auto;
+  padding:25px 16px 50px
+}
+
+.hero{
+  text-align:center
+}
+
+.hero b{
+  font-size:42px
+}
+
+.hero h1{
+  margin:5px 0
+}
+
+.muted{
+  color:#8d8191
+}
+
+.card{
+  background:#fff;
+  border:1px solid #eee1ee;
+  border-radius:22px;
+  padding:20px;
+  margin:14px 0;
+  box-shadow:0 8px 25px #5b35600d
+}
+
+h2{
+  font-size:18px
+}
+
+.points{
+  display:flex;
+  justify-content:space-between;
+  background:linear-gradient(135deg,#f5eaff,#fff0f7)
+}
+
+.points strong{
+  font-size:28px
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:9px
+}
+
+button{
+  border:1px solid #eaddeb;
+  background:#fff;
+  border-radius:15px;
+  padding:13px;
+  cursor:pointer;
+  color:#3b3040;
+  font-size:14px
+}
+
+button.sel{
+  background:#f3e6fa;
+  border-color:#ad8bc9
+}
+
+textarea{
+  width:100%;
+  min-height:95px;
+  box-sizing:border-box;
+  border:1px solid #eaddeb;
+  border-radius:15px;
+  padding:12px;
+  font:inherit;
+  resize:vertical
+}
+
+.primary{
+  width:100%;
+  margin-top:12px;
+  border:0;
+  background:linear-gradient(135deg,#9a79d4,#df88b5);
+  color:white;
+  font-weight:bold;
+  padding:15px
+}
+
+.reward{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:13px 0;
+  border-bottom:1px solid #eee
+}
+
+.reward:last-child{
+  border:0
+}
+
+.reward .icon{
+  font-size:27px
+}
+
+.reward .info{
+  flex:1
+}
+
+.locked{
+  opacity:.4
+}
+
+.claim{
+  padding:8px 11px
+}
+
+.toast{
+  position:fixed;
+  bottom:22px;
+  left:50%;
+  transform:translateX(-50%);
+  background:#3b3040;
+  color:#fff;
+  padding:12px 16px;
+  border-radius:14px;
+  display:none
+}
+
+@media(max-width:480px){
+  .grid{
+    grid-template-columns:1fr
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+  <div class="hero">
+    <b>💜</b>
+    <h1>Nosso Cantinho</h1>
+    <p class="muted">
+      Um lugarzinho só nosso. Pra contar como tá o dia,
+      pedir carinho e juntar umas estrelinhas.
+    </p>
+  </div>
+
+  <div class="card points">
+    <div>
+      <small>Suas estrelinhas</small><br>
+      <strong id="pts">0 ✨</strong>
+    </div>
+
+    <div style="text-align:right">
+      <small>Check-ins</small><br>
+      <strong id="cks">0</strong>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>💭 Como você tá hoje?</h2>
+
+    <div class="grid" id="moods">
+      <button>🥰 Feliz</button>
+      <button>😌 Bem</button>
+      <button>😐 Meio meh</button>
+      <button>🥺 Meio tristinha</button>
+      <button>😤 Estressada</button>
+      <button>🥱 Cansada</button>
+      <button>🫂 Precisando de carinho</button>
+      <button>💜 Com saudade</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>🫂 O que você gostaria agora?</h2>
+
+    <div class="grid" id="needs">
+      <button>🫂 Abraço</button>
+      <button>💋 Beijinhos</button>
+      <button>🎮 Jogar juntos</button>
+      <button>🎬 Assistir algo</button>
+      <button>💬 Conversar</button>
+      <button>😂 Dar risada</button>
+      <button>❤️ Ficar juntinha</button>
+      <button>🍫 Um chocolatinho</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>💌 Quer me contar alguma coisa?</h2>
+
+    <textarea
+      id="msg"
+      placeholder="Pode falar qualquer coisa..."
+    ></textarea>
+  </div>
+
+  <div class="card">
+    <h2>🌙 Uma coisinha boa de hoje</h2>
+
+    <textarea
+      id="good"
+      placeholder="Mesmo que seja pequenininha."
+    ></textarea>
+
+    <button class="primary" onclick="checkin()">
+      Guardar meu check-in 💜
+    </button>
+  </div>
+
+  <div class="card">
+    <h2>🎁 Mimos</h2>
+    <div id="rewards"></div>
+  </div>
+
+  <p class="muted" style="text-align:center;font-size:13px">
+    Feito com carinho. 💜
+  </p>
+
+</div>
+
+<div class="toast" id="toast"></div>
+
 <script>
-const R=[[5,'🍫','Chocolate'],[10,'🍬','Docinho'],[15,'🥤','Açaí'],[20,'💆','Massagem'],[30,'🎬','Cinema'],[40,'🍕','Comida favorita'],[50,'🎁','Surpresa'],[75,'🦈','Mimo de tubarão'],[100,'💜','Date surpresa']];
-let s=JSON.parse(localStorage.getItem('cantinho')||'{"p":0,"c":0,"r":[]}');
-document.querySelectorAll('#moods button').forEach(b=>b.onclick=()=>{document.querySelectorAll('#moods button').forEach(x=>x.classList.remove('sel'));b.classList.add('sel')});
-document.querySelectorAll('#needs button').forEach(b=>b.onclick=()=>b.classList.toggle('sel'));
-function render(){pts.textContent=s.p+' ✨';cks.textContent=s.c;rewards.innerHTML=R.map((r,i)=>'<div class="reward '+(s.p<r[0]?'locked':'')+'"><div class="icon">'+r[1]+'</div><div class="info"><b>'+r[2]+'</b><br><small>'+((s.r.includes(i))?'Resgatado 💜':r[0]+' estrelinhas')+'</small></div>'+((s.p>=r[0]&&!s.r.includes(i))?'<button class="claim" onclick="claim('+i+')">Resgatar</button>':'')+'</div>').join('')}
-function save(){localStorage.setItem('cantinho',JSON.stringify(s));render()}
-function pop(t){toast.textContent=t;toast.style.display='block';setTimeout(()=>toast.style.display='none',2200)}
-function checkin(){if(!document.querySelector('#moods .sel'))return pop('Escolhe como você tá primeiro 🫂');s.p+=1;s.c+=1;if(msg.value.trim())s.p++;if(good.value.trim())s.p++;save();msg.value='';good.value='';document.querySelectorAll('.sel').forEach(x=>x.classList.remove('sel'));pop('Check-in guardado. + estrelinhas 💜')}
-function claim(i){if(s.p<R[i][0])return;s.p-=R[i][0];s.r.push(i);save();pop('Mimo desbloqueado! 👀💜')}
+
+const R=[
+  [5,'🍫','Chocolate'],
+  [10,'🍬','Docinho'],
+  [15,'🥤','Açaí'],
+  [20,'💆','Massagem'],
+  [50,'🎁','Surpresa']
+];
+
+let s=JSON.parse(
+  localStorage.getItem('cantinho') ||
+  '{"p":0,"c":0,"r":[]}'
+);
+
+document
+  .querySelectorAll('#moods button')
+  .forEach(b=>b.onclick=()=>{
+    document
+      .querySelectorAll('#moods button')
+      .forEach(x=>x.classList.remove('sel'));
+
+    b.classList.add('sel');
+  });
+
+document
+  .querySelectorAll('#needs button')
+  .forEach(b=>b.onclick=()=>{
+    b.classList.toggle('sel');
+  });
+
+function render(){
+
+  pts.textContent=s.p+' ✨';
+
+  cks.textContent=s.c;
+
+  rewards.innerHTML=R.map((r,i)=>
+    '<div class="reward '+(s.p<r[0]?'locked':'')+'">'+
+
+      '<div class="icon">'+r[1]+'</div>'+
+
+      '<div class="info">'+
+        '<b>'+r[2]+'</b><br>'+
+        '<small>'+
+          ((s.r.includes(i))
+            ? 'Resgatado 💜'
+            : r[0]+' estrelinhas'
+          )+
+        '</small>'+
+      '</div>'+
+
+      (
+        (s.p>=r[0]&&!s.r.includes(i))
+        ? '<button class="claim" onclick="claim('+i+')">Resgatar</button>'
+        : ''
+      )+
+
+    '</div>'
+  ).join('');
+}
+
+function save(){
+  localStorage.setItem('cantinho',JSON.stringify(s));
+  render();
+}
+
+function pop(t){
+  toast.textContent=t;
+  toast.style.display='block';
+
+  setTimeout(
+    ()=>toast.style.display='none',
+    2200
+  );
+}
+
+function checkin(){
+
+  if(!document.querySelector('#moods .sel'))
+    return pop('Escolhe como você tá primeiro 🫂');
+
+  s.p+=1;
+  s.c+=1;
+
+  if(msg.value.trim())
+    s.p++;
+
+  if(good.value.trim())
+    s.p++;
+
+  save();
+
+  msg.value='';
+  good.value='';
+
+  document
+    .querySelectorAll('.sel')
+    .forEach(x=>x.classList.remove('sel'));
+
+  pop('Check-in guardado. + estrelinhas 💜');
+}
+
+function claim(i){
+
+  if(s.p<R[i][0])
+    return;
+
+  s.p-=R[i][0];
+
+  s.r.push(i);
+
+  save();
+
+  pop('Mimo desbloqueado! 👀💜');
+}
+
 render();
-</script></body></html>
+
+</script>
+
+</body>
+</html>
