@@ -8,265 +8,326 @@
 
 <style>
 *{
-  box-sizing:border-box
+  box-sizing:border-box;
 }
 
 body{
   margin:0;
   background:linear-gradient(135deg,#fff7fc,#f3edff);
   font-family:Arial,sans-serif;
-  color:#3b3040
+  color:#3b3040;
+  min-height:100vh;
+}
+
+.app{
+  max-width:650px;
+  margin:auto;
+  padding:20px;
 }
 
 /* LOGIN */
 
-.login{
+.login-screen{
   min-height:100vh;
   display:flex;
   align-items:center;
   justify-content:center;
-  padding:20px
+  padding:20px;
 }
 
 .login-box{
   width:100%;
-  max-width:390px;
-  background:#fff;
-  border:1px solid #eee1ee;
+  max-width:420px;
+  background:white;
   border-radius:25px;
-  padding:30px 24px;
-  box-shadow:0 12px 35px #5b356015;
-  text-align:center
-}
-
-.login-icon{
-  font-size:50px;
-  margin-bottom:5px
+  padding:30px;
+  box-shadow:0 15px 40px rgba(80,50,100,.15);
+  text-align:center;
 }
 
 .login-box h1{
-  margin:5px 0 8px
+  margin-top:0;
+  color:#8b4db3;
 }
 
 .login-box p{
-  color:#8d8191;
-  font-size:14px;
-  margin-bottom:22px
+  color:#766b7a;
 }
 
 .login-input{
   width:100%;
   padding:14px;
-  border:1px solid #eaddeb;
-  border-radius:15px;
-  font-size:15px;
+  border:1px solid #ddd;
+  border-radius:12px;
+  font-size:16px;
   outline:none;
-  text-align:center
+  margin:15px 0 10px;
 }
 
 .login-input:focus{
-  border-color:#ad8bc9
+  border-color:#a86dcc;
 }
 
 .login-button{
   width:100%;
-  margin-top:12px;
   border:0;
-  border-radius:15px;
   padding:14px;
-  background:linear-gradient(135deg,#9a79d4,#df88b5);
+  border-radius:12px;
+  background:#8b4db3;
   color:white;
-  font-weight:bold;
-  cursor:pointer
+  font-size:16px;
+  cursor:pointer;
+}
+
+.login-button:hover{
+  background:#783d9e;
 }
 
 .login-error{
-  color:#c45b7d;
-  font-size:13px;
-  min-height:18px;
-  margin-top:12px
+  color:#d64b67;
+  min-height:20px;
+  margin-top:10px;
 }
 
 /* APP */
 
-.app{
-  max-width:650px;
-  margin:auto;
-  padding:25px 16px 50px
+header{
+  background:white;
+  border-radius:22px;
+  padding:22px;
+  box-shadow:0 10px 30px rgba(80,50,100,.10);
+  margin-bottom:16px;
+  position:relative;
 }
 
-.hero{
-  text-align:center
+header h1{
+  margin:0 0 5px;
+  color:#8b4db3;
 }
 
-.hero b{
-  font-size:42px
+header p{
+  margin:0;
+  color:#756979;
 }
 
-.hero h1{
-  margin:5px 0
+.user-badge{
+  display:inline-block;
+  margin-top:12px;
+  background:#f0e4f8;
+  color:#7b459b;
+  padding:6px 10px;
+  border-radius:20px;
+  font-size:13px;
 }
 
-.muted{
-  color:#8d8191
+.logout{
+  position:absolute;
+  right:18px;
+  top:18px;
+  border:0;
+  background:#f4edf7;
+  color:#75438e;
+  padding:8px 12px;
+  border-radius:10px;
+  cursor:pointer;
 }
+
+/* CARDS */
 
 .card{
-  background:#fff;
-  border:1px solid #eee1ee;
+  background:white;
   border-radius:22px;
   padding:20px;
-  margin:14px 0;
-  box-shadow:0 8px 25px #5b35600d
+  margin-bottom:16px;
+  box-shadow:0 10px 30px rgba(80,50,100,.09);
 }
 
-h2{
-  font-size:18px
+.card h2{
+  margin-top:0;
+  font-size:19px;
+  color:#684178;
 }
+
+/* PONTOS */
 
 .points{
+  text-align:center;
+}
+
+.points-number{
+  font-size:48px;
+  font-weight:bold;
+  color:#8b4db3;
+}
+
+.points-label{
+  color:#777;
+}
+
+/* BOTÕES */
+
+.buttons{
   display:flex;
-  justify-content:space-between;
-  background:linear-gradient(135deg,#f5eaff,#fff0f7)
+  flex-wrap:wrap;
+  gap:10px;
 }
 
-.points strong{
-  font-size:28px
-}
-
-.grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:9px
-}
-
-button{
-  border:1px solid #eaddeb;
-  background:#fff;
-  border-radius:15px;
-  padding:13px;
+.btn{
+  flex:1;
+  min-width:120px;
+  border:0;
+  padding:12px;
+  border-radius:12px;
   cursor:pointer;
-  color:#3b3040;
-  font-size:14px
+  background:#f2e6f8;
+  color:#633b74;
+  font-size:14px;
 }
 
-button.sel{
-  background:#f3e6fa;
-  border-color:#ad8bc9
+.btn:hover{
+  background:#e8d7f0;
 }
+
+.btn.selected{
+  background:#8b4db3;
+  color:white;
+}
+
+/* TEXTAREA */
 
 textarea{
   width:100%;
-  min-height:95px;
-  border:1px solid #eaddeb;
-  border-radius:15px;
+  min-height:90px;
+  resize:vertical;
+  border:1px solid #ddd;
+  border-radius:12px;
   padding:12px;
-  font:inherit;
-  resize:vertical
+  font-family:Arial,sans-serif;
+  font-size:14px;
+  outline:none;
 }
 
-.primary{
-  width:100%;
-  margin-top:12px;
-  border:0;
-  background:linear-gradient(135deg,#9a79d4,#df88b5);
-  color:white;
-  font-weight:bold;
-  padding:15px
+textarea:focus{
+  border-color:#a86dcc;
 }
+
+/* CHECK-IN */
+
+.checkin-button{
+  width:100%;
+  border:0;
+  padding:14px;
+  border-radius:13px;
+  background:#8b4db3;
+  color:white;
+  font-size:16px;
+  cursor:pointer;
+  margin-top:12px;
+}
+
+.checkin-button:hover{
+  background:#783d9e;
+}
+
+/* RECOMPENSAS */
 
 .reward{
   display:flex;
   align-items:center;
-  gap:12px;
-  padding:13px 0;
-  border-bottom:1px solid #eee
+  gap:14px;
+  padding:13px;
+  margin-bottom:10px;
+  border-radius:14px;
+  background:#faf7fc;
+  border:1px solid #eee;
 }
 
-.reward:last-child{
-  border:0
+.reward-icon{
+  font-size:28px;
 }
 
-.reward .icon{
-  font-size:27px
+.reward-info{
+  flex:1;
 }
 
-.reward .info{
-  flex:1
+.reward-name{
+  font-weight:bold;
+}
+
+.reward-cost{
+  color:#8b4db3;
+  font-size:13px;
+  margin-top:3px;
+}
+
+.reward-status{
+  font-size:13px;
+}
+
+.unlocked{
+  color:#2c9b62;
 }
 
 .locked{
-  opacity:.4
-}
-
-.claim{
-  padding:8px 11px
-}
-
-.toast{
-  position:fixed;
-  bottom:22px;
-  left:50%;
-  transform:translateX(-50%);
-  background:#3b3040;
-  color:#fff;
-  padding:12px 16px;
-  border-radius:14px;
-  display:none;
-  z-index:999
+  color:#999;
 }
 
 /* ADMIN */
 
-.admin-card{
-  background:linear-gradient(135deg,#fff4fb,#f4efff);
-  border:1px solid #e3d4eb
+.admin{
+  border:2px dashed #c69bdb;
 }
 
-.admin-title{
-  display:flex;
-  justify-content:space-between;
-  align-items:center
+.admin h2{
+  color:#8b4db3;
 }
 
-.admin-badge{
-  font-size:11px;
-  padding:6px 9px;
-  border-radius:10px;
-  background:#eadcf5;
-  color:#6d5080
-}
-
-.admin-buttons{
+.admin-grid{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:8px;
-  margin-top:12px
+  gap:10px;
 }
 
-.admin-buttons button{
-  background:#fff
+.admin-grid button{
+  border:0;
+  padding:12px;
+  border-radius:10px;
+  cursor:pointer;
+  background:#f1e5f7;
+  color:#623c73;
 }
 
-.logout{
-  width:100%;
-  margin-top:10px;
-  background:#fff;
-  color:#7d637f
+.admin-grid button:hover{
+  background:#e4d0ed;
+}
+
+.reset{
+  background:#ffe8ed !important;
+  color:#a23d53 !important;
+}
+
+/* TOAST */
+
+.toast{
+  position:fixed;
+  bottom:20px;
+  left:50%;
+  transform:translateX(-50%);
+  background:#3b3040;
+  color:white;
+  padding:12px 18px;
+  border-radius:12px;
+  opacity:0;
+  pointer-events:none;
+  transition:.3s;
+}
+
+.toast.show{
+  opacity:1;
 }
 
 .hidden{
-  display:none!important
-}
-
-@media(max-width:480px){
-  .grid{
-    grid-template-columns:1fr
-  }
-
-  .admin-buttons{
-    grid-template-columns:1fr 1fr
-  }
+  display:none;
 }
 </style>
 </head>
@@ -275,38 +336,29 @@ textarea{
 
 <!-- LOGIN -->
 
-<div class="login" id="login">
+<div id="loginScreen" class="login-screen">
 
   <div class="login-box">
 
-    <div class="login-icon">💜</div>
-
-    <h1>Nosso Cantinho</h1>
+    <h1>Nosso Cantinho 💜</h1>
 
     <p>
-      Um lugarzinho só nosso.<br>
-      Digite a palavrinha secreta para entrar.
+      Um cantinho só nosso.
     </p>
 
     <input
-      type="password"
-      id="password"
+      id="passwordInput"
       class="login-input"
-      placeholder="Palavra secreta"
+      type="password"
+      placeholder="Digite a senha"
       autocomplete="off"
     >
 
-    <button
-      class="login-button"
-      onclick="login()"
-    >
-      Entrar 💜
+    <button class="login-button" onclick="login()">
+      Entrar
     </button>
 
-    <div
-      id="loginError"
-      class="login-error"
-    ></div>
+    <div id="loginError" class="login-error"></div>
 
   </div>
 
@@ -315,255 +367,253 @@ textarea{
 
 <!-- APP -->
 
-<div class="app hidden" id="app">
+<div id="app" class="app hidden">
 
-  <div class="hero">
-    <b>💜</b>
+  <header>
 
-    <h1>Nosso Cantinho</h1>
+    <button class="logout" onclick="logout()">
+      Sair
+    </button>
 
-    <p class="muted">
-      Um lugarzinho só nosso. Pra contar como tá o dia,
-      pedir carinho e juntar umas estrelinhas.
+    <h1>Nosso Cantinho 💜</h1>
+
+    <p>
+      Pequenas coisas que deixam nossos dias mais especiais.
     </p>
-  </div>
+
+    <span id="userBadge" class="user-badge"></span>
+
+  </header>
 
 
   <!-- PONTOS -->
 
-  <div class="card points">
+  <section class="card points">
 
-    <div>
-      <small>Suas estrelinhas</small><br>
-      <strong id="pts">0 ✨</strong>
+    <h2>✨ Nossos pontos</h2>
+
+    <div id="points" class="points-number">
+      0
     </div>
 
-    <div style="text-align:right">
-      <small>Check-ins</small><br>
-      <strong id="cks">0</strong>
+    <div class="points-label">
+      pontos acumulados
     </div>
 
-  </div>
-
-
-  <!-- ADMIN -->
-
-  <div
-    class="card admin-card hidden"
-    id="adminPanel"
-  >
-
-    <div class="admin-title">
-
-      <h2 style="margin:0">
-        🔐 Administração
-      </h2>
-
-      <span class="admin-badge">
-        ADMIN
-      </span>
-
-    </div>
-
-    <p class="muted" style="font-size:13px">
-      Controles do cantinho.
-    </p>
-
-    <div class="admin-buttons">
-
-      <button onclick="addPoints(1)">
-        +1 ✨
-      </button>
-
-      <button onclick="addPoints(5)">
-        +5 ✨
-      </button>
-
-      <button onclick="removePoints(1)">
-        −1 ✨
-      </button>
-
-      <button onclick="removePoints(5)">
-        −5 ✨
-      </button>
-
-      <button onclick="addCheckin()">
-        +1 Check-in
-      </button>
-
-      <button onclick="removeCheckin()">
-        −1 Check-in
-      </button>
-
-    </div>
-
-    <button
-      class="logout"
-      onclick="resetData()"
-    >
-      ⚠️ Resetar tudo
-    </button>
-
-  </div>
+  </section>
 
 
   <!-- HUMOR -->
 
-  <div class="card">
+  <section class="card">
 
-    <h2>💭 Como você tá hoje?</h2>
+    <h2>💭 Como você está hoje?</h2>
 
-    <div
-      class="grid"
-      id="moods"
-    >
+    <div class="buttons">
 
-      <button>🥰 Feliz</button>
-      <button>😌 Bem</button>
-      <button>😐 Meio meh</button>
-      <button>🥺 Meio tristinha</button>
-      <button>😤 Estressada</button>
-      <button>🥱 Cansada</button>
-      <button>🫂 Precisando de carinho</button>
-      <button>💜 Com saudade</button>
+      <button class="btn mood" data-value="🥰 Feliz" onclick="selectMood(this)">
+        🥰 Feliz
+      </button>
+
+      <button class="btn mood" data-value="😊 Bem" onclick="selectMood(this)">
+        😊 Bem
+      </button>
+
+      <button class="btn mood" data-value="😐 Normal" onclick="selectMood(this)">
+        😐 Normal
+      </button>
+
+      <button class="btn mood" data-value="😔 Triste" onclick="selectMood(this)">
+        😔 Triste
+      </button>
+
+      <button class="btn mood" data-value="😴 Cansada(o)" onclick="selectMood(this)">
+        😴 Cansada(o)
+      </button>
 
     </div>
 
-  </div>
+  </section>
 
 
   <!-- NECESSIDADES -->
 
-  <div class="card">
+  <section class="card">
 
-    <h2>🫂 O que você gostaria agora?</h2>
+    <h2>🫶 O que você precisa?</h2>
 
-    <div
-      class="grid"
-      id="needs"
-    >
+    <div class="buttons">
 
-      <button>🫂 Abraço</button>
-      <button>💋 Beijinhos</button>
-      <button>🎮 Jogar juntos</button>
-      <button>🎬 Assistir algo</button>
-      <button>💬 Conversar</button>
-      <button>😂 Dar risada</button>
-      <button>❤️ Ficar juntinha</button>
-      <button>🍫 Um chocolatinho</button>
+      <button class="btn need" data-value="Um abraço" onclick="selectNeed(this)">
+        🤗 Um abraço
+      </button>
+
+      <button class="btn need" data-value="Carinho" onclick="selectNeed(this)">
+        💜 Carinho
+      </button>
+
+      <button class="btn need" data-value="Conversar" onclick="selectNeed(this)">
+        💬 Conversar
+      </button>
+
+      <button class="btn need" data-value="Espaço" onclick="selectNeed(this)">
+        🌙 Espaço
+      </button>
+
+      <button class="btn need" data-value="Companhia" onclick="selectNeed(this)">
+        🫂 Companhia
+      </button>
 
     </div>
 
-  </div>
+  </section>
 
 
   <!-- MENSAGEM -->
 
-  <div class="card">
+  <section class="card">
 
-    <h2>💌 Quer me contar alguma coisa?</h2>
+    <h2>💌 Quero te dizer...</h2>
 
     <textarea
-      id="msg"
-      placeholder="Pode falar qualquer coisa..."
+      id="message"
+      placeholder="Escreva alguma coisa..."
+      oninput="saveData()"
     ></textarea>
 
-  </div>
+  </section>
 
 
   <!-- COISA BOA -->
 
-  <div class="card">
+  <section class="card">
 
-    <h2>🌙 Uma coisinha boa de hoje</h2>
+    <h2>🌷 Uma coisa boa do meu dia</h2>
 
     <textarea
       id="good"
-      placeholder="Mesmo que seja pequenininha."
+      placeholder="Conte alguma coisa boa que aconteceu..."
+      oninput="saveData()"
     ></textarea>
 
-    <button
-      class="primary"
-      onclick="checkin()"
-    >
-      Guardar meu check-in 💜
+  </section>
+
+
+  <!-- CHECK-IN -->
+
+  <section class="card">
+
+    <h2>⭐ Check-in</h2>
+
+    <p>
+      Fazer o check-in ajuda a gente a acompanhar nossos momentos.
+    </p>
+
+    <div>
+      Check-ins realizados:
+      <strong id="checkins">0</strong>
+    </div>
+
+    <button class="checkin-button" onclick="checkIn()">
+      Fazer check-in ⭐
     </button>
 
-  </div>
+  </section>
 
 
-  <!-- MIMOS -->
+  <!-- RECOMPENSAS -->
 
-  <div class="card">
+  <section class="card">
 
     <h2>🎁 Mimos</h2>
 
     <div id="rewards"></div>
 
-  </div>
+  </section>
 
 
-  <button
-    class="logout"
-    onclick="logout()"
-  >
-    Sair
-  </button>
+  <!-- ADMIN -->
 
+  <section id="adminPanel" class="card admin hidden">
 
-  <p
-    class="muted"
-    style="text-align:center;font-size:13px"
-  >
-    Feito com carinho. 💜
-  </p>
+    <h2>👑 Painel do Admin</h2>
+
+    <p>
+      Controles administrativos do cantinho.
+    </p>
+
+    <div class="admin-grid">
+
+      <button onclick="changePoints(1)">
+        +1 ponto
+      </button>
+
+      <button onclick="changePoints(5)">
+        +5 pontos
+      </button>
+
+      <button onclick="changePoints(-1)">
+        -1 ponto
+      </button>
+
+      <button onclick="changePoints(-5)">
+        -5 pontos
+      </button>
+
+      <button onclick="changeCheckins(1)">
+        +1 check-in
+      </button>
+
+      <button onclick="changeCheckins(-1)">
+        -1 check-in
+      </button>
+
+      <button class="reset" onclick="resetData()">
+        🗑️ Resetar tudo
+      </button>
+
+    </div>
+
+  </section>
 
 </div>
 
 
-<div
-  class="toast"
-  id="toast"
-></div>
+<div id="toast" class="toast"></div>
 
 
 <script>
 
 /* =========================
-   SENHAS
+   CONFIGURAÇÃO
 ========================= */
 
-const ADMIN_PASSWORD = 'dsaqweww!!';
-const PAÇOCA_PASSWORD = 'pacoca2026';
-
-
-/* =========================
-   MIMOS
-========================= */
-
-const R = [
-
-  [5,'🍫','Chocolate'],
-
-  [10,'🍬','Docinho'],
-
-  [15,'🥤','Açaí'],
-
-  [50,'🎁','Surpresa']
-
-];
+const ADMIN_PASSWORD = "dsaqweww!!";
+const PACOCA_PASSWORD = "pacoca2026";
 
 
 /* =========================
    DADOS
 ========================= */
 
-let s = JSON.parse(
-  localStorage.getItem('cantinho') ||
-  '{"p":0,"c":0,"r":[]}'
+let data = JSON.parse(
+  localStorage.getItem("cantinho") ||
+  '{"points":0,"checkins":0,"mood":"","need":"","message":"","good":""}'
 );
 
 let currentUser = null;
+
+
+/* =========================
+   RECOMPENSAS
+========================= */
+
+const rewards = [
+  [5, "🍫", "Chocolate"],
+  [10, "🍬", "Docinho"],
+  [15, "🥤", "Açaí"],
+  [50, "🎁", "Surpresa"]
+];
 
 
 /* =========================
@@ -573,210 +623,95 @@ let currentUser = null;
 function login(){
 
   const password =
-    document
-      .getElementById('password')
-      .value;
+    document.getElementById("passwordInput").value;
 
   const error =
-    document
-      .getElementById('loginError');
+    document.getElementById("loginError");
 
 
   if(password === ADMIN_PASSWORD){
 
-    currentUser = 'admin';
+    currentUser = "admin";
 
     openApp();
-
-    error.textContent = '';
-
-    document.getElementById('password').value = '';
 
     return;
   }
 
 
-  if(password === PAÇOCA_PASSWORD){
+  if(password === PACOCA_PASSWORD){
 
-    currentUser = 'pacoca';
+    currentUser = "pacoca";
 
     openApp();
-
-    error.textContent = '';
-
-    document.getElementById('password').value = '';
 
     return;
   }
 
 
-  error.textContent =
-    'Palavra secreta incorreta. 💜';
+  error.textContent = "Senha incorreta.";
 
 }
 
-
-document
-  .getElementById('password')
-  .addEventListener('keydown',function(e){
-
-    if(e.key === 'Enter'){
-      login();
-    }
-
-  });
-
-
-/* =========================
-   ABRIR APP
-========================= */
 
 function openApp(){
 
   document
-    .getElementById('login')
-    .classList.add('hidden');
+    .getElementById("loginScreen")
+    .classList.add("hidden");
 
   document
-    .getElementById('app')
-    .classList.remove('hidden');
+    .getElementById("app")
+    .classList.remove("hidden");
 
 
-  if(currentUser === 'admin'){
+  const badge =
+    document.getElementById("userBadge");
+
+
+  if(currentUser === "admin"){
+
+    badge.textContent = "👑 Admin";
 
     document
-      .getElementById('adminPanel')
-      .classList.remove('hidden');
+      .getElementById("adminPanel")
+      .classList.remove("hidden");
 
   }else{
 
+    badge.textContent = "💜 Paçoca";
+
     document
-      .getElementById('adminPanel')
-      .classList.add('hidden');
+      .getElementById("adminPanel")
+      .classList.add("hidden");
 
   }
 
 
-  render();
+  loadData();
 
 }
 
 
-/* =========================
-   HUMOR
-========================= */
+function logout(){
 
-document
-  .querySelectorAll('#moods button')
-  .forEach(b=>{
-
-    b.onclick=()=>{
-
-      document
-        .querySelectorAll('#moods button')
-        .forEach(x=>
-          x.classList.remove('sel')
-        );
-
-      b.classList.add('sel');
-
-    };
-
-  });
-
-
-/* =========================
-   NECESSIDADES
-========================= */
-
-document
-  .querySelectorAll('#needs button')
-  .forEach(b=>{
-
-    b.onclick=()=>{
-
-      b.classList.toggle('sel');
-
-    };
-
-  });
-
-
-/* =========================
-   RENDER
-========================= */
-
-function render(){
+  currentUser = null;
 
   document
-    .getElementById('pts')
-    .textContent =
-      s.p + ' ✨';
-
+    .getElementById("app")
+    .classList.add("hidden");
 
   document
-    .getElementById('cks')
-    .textContent =
-      s.c;
-
+    .getElementById("loginScreen")
+    .classList.remove("hidden");
 
   document
-    .getElementById('rewards')
-    .innerHTML =
+    .getElementById("passwordInput")
+    .value = "";
 
-    R.map((r,i)=>{
-
-      const unlocked =
-        s.p >= r[0];
-
-      const claimed =
-        s.r.includes(i);
-
-
-      return `
-
-        <div class="reward ${!unlocked?'locked':''}">
-
-          <div class="icon">
-            ${r[1]}
-          </div>
-
-          <div class="info">
-
-            <b>${r[2]}</b><br>
-
-            <small>
-
-              ${
-                claimed
-                ? 'Resgatado 💜'
-                : r[0] + ' estrelinhas'
-              }
-
-            </small>
-
-          </div>
-
-          ${
-            unlocked && !claimed
-
-            ? `
-              <button
-                class="claim"
-                onclick="claim(${i})"
-              >
-                Resgatar
-              </button>
-            `
-
-            : ''
-          }
-
-        </div>
-
-      `;
-
-    }).join('');
+  document
+    .getElementById("loginError")
+    .textContent = "";
 
 }
 
@@ -785,36 +720,107 @@ function render(){
    SALVAR
 ========================= */
 
-function save(){
+function saveData(){
+
+  data.message =
+    document.getElementById("message").value;
+
+  data.good =
+    document.getElementById("good").value;
+
 
   localStorage.setItem(
-    'cantinho',
-    JSON.stringify(s)
+    "cantinho",
+    JSON.stringify(data)
   );
-
-  render();
 
 }
 
 
 /* =========================
-   TOAST
+   CARREGAR
 ========================= */
 
-function pop(t){
+function loadData(){
 
-  const toast =
-    document.getElementById('toast');
+  document.getElementById("points").textContent =
+    data.points;
 
-  toast.textContent = t;
+  document.getElementById("checkins").textContent =
+    data.checkins;
 
-  toast.style.display = 'block';
+  document.getElementById("message").value =
+    data.message || "";
 
-  setTimeout(()=>{
+  document.getElementById("good").value =
+    data.good || "";
 
-    toast.style.display = 'none';
 
-  },2200);
+  document.querySelectorAll(".mood")
+    .forEach(button => {
+
+      button.classList.toggle(
+        "selected",
+        button.dataset.value === data.mood
+      );
+
+    });
+
+
+  document.querySelectorAll(".need")
+    .forEach(button => {
+
+      button.classList.toggle(
+        "selected",
+        button.dataset.value === data.need
+      );
+
+    });
+
+
+  renderRewards();
+
+}
+
+
+/* =========================
+   HUMOR
+========================= */
+
+function selectMood(button){
+
+  document
+    .querySelectorAll(".mood")
+    .forEach(b => b.classList.remove("selected"));
+
+  button.classList.add("selected");
+
+  data.mood = button.dataset.value;
+
+  saveData();
+
+  showToast("Humor atualizado 💜");
+
+}
+
+
+/* =========================
+   NECESSIDADE
+========================= */
+
+function selectNeed(button){
+
+  document
+    .querySelectorAll(".need")
+    .forEach(b => b.classList.remove("selected"));
+
+  button.classList.add("selected");
+
+  data.need = button.dataset.value;
+
+  saveData();
+
+  showToast("Necessidade atualizada 💜");
 
 }
 
@@ -823,239 +829,249 @@ function pop(t){
    CHECK-IN
 ========================= */
 
-function checkin(){
+function checkIn(){
 
-  if(
-    !document
-      .querySelector('#moods .sel')
-  ){
+  data.checkins++;
 
-    return pop(
-      'Escolhe como você tá primeiro 🫂'
-    );
+  /*
+    Check-in básico = 1 ponto.
+    Se houver mensagem = +1.
+    Se houver coisa boa = +1.
+  */
 
-  }
+  let gained = 1;
 
+  if(data.message.trim() !== "")
+    gained++;
 
-  s.p += 1;
-
-  s.c += 1;
-
-
-  if(
-    document
-      .getElementById('msg')
-      .value
-      .trim()
-  ){
-
-    s.p++;
-
-  }
+  if(data.good.trim() !== "")
+    gained++;
 
 
-  if(
-    document
-      .getElementById('good')
-      .value
-      .trim()
-  ){
-
-    s.p++;
-
-  }
+  data.points += gained;
 
 
-  save();
+  localStorage.setItem(
+    "cantinho",
+    JSON.stringify(data)
+  );
 
 
-  document
-    .getElementById('msg')
-    .value = '';
-
-  document
-    .getElementById('good')
-    .value = '';
+  loadData();
 
 
-  document
-    .querySelectorAll('.sel')
-    .forEach(x=>
-      x.classList.remove('sel')
-    );
-
-
-  pop(
-    'Check-in guardado. + estrelinhas 💜'
+  showToast(
+    "Check-in feito! +" + gained + " pontos ⭐"
   );
 
 }
 
 
 /* =========================
-   RESGATAR MIMO
+   RECOMPENSAS
 ========================= */
 
-function claim(i){
+function renderRewards(){
 
-  if(s.p < R[i][0])
-    return;
+  const container =
+    document.getElementById("rewards");
 
-
-  s.p -= R[i][0];
-
-  s.r.push(i);
-
-  save();
+  container.innerHTML = "";
 
 
-  pop(
-    'Mimo desbloqueado! 👀💜'
-  );
+  rewards.forEach(reward => {
+
+    const cost = reward[0];
+    const icon = reward[1];
+    const name = reward[2];
+
+    const unlocked =
+      data.points >= cost;
+
+
+    const div =
+      document.createElement("div");
+
+    div.className = "reward";
+
+
+    div.innerHTML = `
+
+      <div class="reward-icon">
+        ${icon}
+      </div>
+
+      <div class="reward-info">
+
+        <div class="reward-name">
+          ${name}
+        </div>
+
+        <div class="reward-cost">
+          ${cost} pontos
+        </div>
+
+      </div>
+
+      <div class="reward-status ${unlocked ? "unlocked" : "locked"}">
+
+        ${unlocked ? "Desbloqueado ✓" : "Bloqueado"}
+
+      </div>
+
+    `;
+
+
+    container.appendChild(div);
+
+  });
 
 }
 
 
 /* =========================
-   ADMIN
+   ADMIN - PONTOS
 ========================= */
 
-function addPoints(amount){
+function changePoints(amount){
 
-  if(currentUser !== 'admin')
+  if(currentUser !== "admin")
     return;
 
-  s.p += amount;
 
-  save();
+  data.points += amount;
 
-  pop(
-    '+' + amount + ' estrelinhas ✨'
+
+  if(data.points < 0)
+    data.points = 0;
+
+
+  localStorage.setItem(
+    "cantinho",
+    JSON.stringify(data)
   );
 
-}
+
+  loadData();
 
 
-function removePoints(amount){
-
-  if(currentUser !== 'admin')
-    return;
-
-  s.p = Math.max(
-    0,
-    s.p - amount
-  );
-
-  save();
-
-  pop(
-    '-' + amount + ' estrelinhas'
-  );
-
-}
-
-
-function addCheckin(){
-
-  if(currentUser !== 'admin')
-    return;
-
-  s.c++;
-
-  save();
-
-  pop(
-    '+1 check-in'
-  );
-
-}
-
-
-function removeCheckin(){
-
-  if(currentUser !== 'admin')
-    return;
-
-  s.c = Math.max(
-    0,
-    s.c - 1
-  );
-
-  save();
-
-  pop(
-    '-1 check-in'
+  showToast(
+    amount > 0
+      ? "+" + amount + " pontos"
+      : amount + " pontos"
   );
 
 }
 
 
 /* =========================
-   RESET
+   ADMIN - CHECKINS
+========================= */
+
+function changeCheckins(amount){
+
+  if(currentUser !== "admin")
+    return;
+
+
+  data.checkins += amount;
+
+
+  if(data.checkins < 0)
+    data.checkins = 0;
+
+
+  localStorage.setItem(
+    "cantinho",
+    JSON.stringify(data)
+  );
+
+
+  loadData();
+
+}
+
+
+/* =========================
+   ADMIN - RESET
 ========================= */
 
 function resetData(){
 
-  if(currentUser !== 'admin')
+  if(currentUser !== "admin")
     return;
 
 
-  const confirmacao =
+  const confirmReset =
     confirm(
-      'Tem certeza que quer zerar todas as estrelinhas, check-ins e mimos?'
+      "Tem certeza que deseja apagar todos os dados?"
     );
 
 
-  if(!confirmacao)
+  if(!confirmReset)
     return;
 
 
-  s = {
-    p:0,
-    c:0,
-    r:[]
+  data = {
+    points:0,
+    checkins:0,
+    mood:"",
+    need:"",
+    message:"",
+    good:""
   };
 
 
-  save();
-
-
-  pop(
-    'Cantinho resetado. 💜'
+  localStorage.setItem(
+    "cantinho",
+    JSON.stringify(data)
   );
 
-}
+
+  loadData();
 
 
-/* =========================
-   SAIR
-========================= */
-
-function logout(){
-
-  currentUser = null;
-
-
-  document
-    .getElementById('app')
-    .classList.add('hidden');
-
-
-  document
-    .getElementById('login')
-    .classList.remove('hidden');
-
-
-  document
-    .getElementById('password')
-    .value = '';
+  showToast("Dados resetados.");
 
 }
 
 
 /* =========================
-   INICIALIZAÇÃO
+   TOAST
 ========================= */
+
+function showToast(message){
+
+  const toast =
+    document.getElementById("toast");
+
+  toast.textContent = message;
+
+  toast.classList.add("show");
+
+
+  setTimeout(() => {
+
+    toast.classList.remove("show");
+
+  }, 2200);
+
+}
+
+
+/* =========================
+   ENTER PARA LOGIN
+========================= */
+
+document
+  .getElementById("passwordInput")
+  .addEventListener("keydown", function(event){
+
+    if(event.key === "Enter"){
+      login();
+    }
+
+  });
 
 </script>
 
