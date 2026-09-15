@@ -228,6 +228,7 @@ textarea{
 
   <div class="card">
     <h2>🎁 Mimos</h2>
+
     <div id="rewards"></div>
   </div>
 
@@ -245,7 +246,6 @@ const R=[
   [5,'🍫','Chocolate'],
   [10,'🍬','Docinho'],
   [15,'🥤','Açaí'],
-  [20,'💆','Massagem'],
   [50,'🎁','Surpresa']
 ];
 
@@ -257,6 +257,7 @@ let s=JSON.parse(
 document
   .querySelectorAll('#moods button')
   .forEach(b=>b.onclick=()=>{
+
     document
       .querySelectorAll('#moods button')
       .forEach(x=>x.classList.remove('sel'));
@@ -284,7 +285,8 @@ function render(){
       '<div class="info">'+
         '<b>'+r[2]+'</b><br>'+
         '<small>'+
-          ((s.r.includes(i))
+          (
+            s.r.includes(i)
             ? 'Resgatado 💜'
             : r[0]+' estrelinhas'
           )+
@@ -292,7 +294,7 @@ function render(){
       '</div>'+
 
       (
-        (s.p>=r[0]&&!s.r.includes(i))
+        s.p>=r[0] && !s.r.includes(i)
         ? '<button class="claim" onclick="claim('+i+')">Resgatar</button>'
         : ''
       )+
@@ -302,12 +304,19 @@ function render(){
 }
 
 function save(){
-  localStorage.setItem('cantinho',JSON.stringify(s));
+
+  localStorage.setItem(
+    'cantinho',
+    JSON.stringify(s)
+  );
+
   render();
 }
 
 function pop(t){
+
   toast.textContent=t;
+
   toast.style.display='block';
 
   setTimeout(
